@@ -22,8 +22,6 @@ export const http = function() {
     mode       : 'no-cors'
   })
 
-  instance.defaults.headers.common['Authorization'] = localStorage.getItem('token')
-
   return instance
 }
 
@@ -78,7 +76,6 @@ export function Post(route, json = {}) {
 export function Get(route) {
   return new Promise((resolve, reject) => {
     verifyRequestCancel(route)
-
     http()
       .get(route)
       .then(res => {

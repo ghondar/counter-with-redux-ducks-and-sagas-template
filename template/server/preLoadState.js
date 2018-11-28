@@ -1,5 +1,5 @@
 import counterDuck from 'reducers/counter'
- 
+
 export default async function(req, res, next) {
   // Get store from locals
   const { store } = res.locals

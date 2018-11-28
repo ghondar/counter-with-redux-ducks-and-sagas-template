@@ -31,6 +31,6 @@ export default base({
   creators: ({ types }) => ({
     addCount          : () => ({ type: types.ADD_COUNT }),
     removeCount       : () => ({ type: types.REMOVE_COUNT }),
-    addCountFromServer: () => ({ type: types.FETCH, WAIT_FOR_ACTION: types.FETCH_FULFILLED })
+    addCountFromServer: () => ({ type: types.FETCH, [WAIT_FOR_ACTION]: types.FETCH_FULFILLED })
   })
 })
