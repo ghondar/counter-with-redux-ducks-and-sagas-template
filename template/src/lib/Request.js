@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const { REACT_APP_REST_API_LOCATION = '', REACT_APP_API_VERSION = 'v1' } = process.env
+const { REACT_APP_REST_API_LOCATION = 'http://localhost:5000', REACT_APP_API_VERSION = 'v1' } = process.env
 
 export const baseURL = REACT_APP_REST_API_LOCATION + '/api/' + REACT_APP_API_VERSION + '/'
 
