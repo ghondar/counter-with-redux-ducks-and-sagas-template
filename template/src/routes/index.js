@@ -1,13 +1,12 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
-import loadable from 'loadable-components'
+import loadable from '@loadable/component'
 
 import Loading from 'components/Common/Loading'
 
-const Dashboard = loadable(() => import(/* webpackChunkName: "Dashboard" */ 'containers/Dashboard'), {
-  LoadingComponent: () => <Loading />,
-  modules         : [ 'containers/Dashboard' ]
+const Dashboard = loadable(() => import('../containers/Dashboard'), {
+  fallback: <Loading />
 })
 
 export default history => (
