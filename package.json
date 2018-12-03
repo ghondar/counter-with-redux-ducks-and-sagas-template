@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "crassa start",
-    "build": "INLINE_RUNTIME_CHUNK=false GENERATE_SOURCEMAP=false crassa build",
+    "build": "crassa build",
     "dev": "crassa dev",
     "lint": "crassa lint",
     "count": "crassa count-lines"
