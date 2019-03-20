@@ -52,7 +52,7 @@
     "extensible-duck": "1.5.0",
     "history": "4.9.0",
     "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react-dom": "npm:@hot-loader/react-dom",
     "react-helmet-async": "0.2.0",
     "react-hot-loader": "4.8.0",
     "react-redux": "6.0.1",
