@@ -38,15 +38,24 @@
     "api": "./src/api"
   },
   "jest": {
+    "moduleFileExtensions": [ "prod.js", "dev.js"],
     "moduleNameMapper": {
-      "utils": "<rootDir>/src/utils",
-      "lib": "<rootDir>/src/lib",
-      "reducers": "<rootDir>/src/reducers",
-      "sagas": "<rootDir>/src/sagas",
-      "components": "<rootDir>/src/components",
-      "containers": "<rootDir>/src/containers",
-      "api": "<rootDir>/src/api"
-    }
+      "^utils$": "<rootDir>/src/utils",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^lib$": "<rootDir>/src/lib",
+      "^lib/(.*)$": "<rootDir>/src/lib/$1",
+      "^reducers$": "<rootDir>/src/reducers",
+      "^reducers/(.*)$": "<rootDir>/src/reducers/$1",
+      "^sagas$": "<rootDir>/src/sagas",
+      "^sagas/(.*)$": "<rootDir>/src/sagas/$1",
+      "^components$": "<rootDir>/src/components",
+      "^components/(.*)$": "<rootDir>/src/components/$1",
+      "^containers$": "<rootDir>/src/containers",
+      "^containers/(.*)$": "<rootDir>/src/containers/$1",
+      "^api$": "<rootDir>/src/api",
+      "^api/(.*)$": "<rootDir>/src/api/$1"
+    },
+    "resolver": null
   },
   "dependencies": {
     "@hot-loader/react-dom": "16.9.0",
