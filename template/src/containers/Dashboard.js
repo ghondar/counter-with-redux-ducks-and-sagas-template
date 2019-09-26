@@ -1,34 +1,21 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import counterDucks from 'reducers/counter'
 
-class Dashboard extends Component {
-  render() {
-    const {
-      counter: { count },
-      addCount,
-      removeCount,
-      addCountFromServer
-    } = this.props
+const { addCount, removeCount, addCountFromServer } = counterDucks.creators
 
-    return (
-      <div>
-        <h1>Counter</h1>
-        <h2>{count}</h2>
-        <button onClick={() => addCount()}>Add</button>
-        <button onClick={() => removeCount()}>remove</button>
-        <button onClick={() => addCountFromServer()}>Add 5 From Server</button>
-      </div>
-    )
-  }
+export default () => {
+  const dispatch = useDispatch()
+  const count = useSelector(({ counter: { count } }) => count)
+
+  return (
+    <div data-testid='counter'>
+      <h1>Counter</h1>
+      <h2>{count}</h2>
+      <button onClick={() => dispatch(addCount())}>Add</button>
+      <button onClick={() => dispatch(removeCount())}>remove</button>
+      <button onClick={() => dispatch(addCountFromServer())}>Add 5 From Server</button>
+    </div>
+  )
 }
-
-export default connect(
-  ({ counter }) => ({ counter }),
-  {
-    addCount          : counterDucks.creators.addCount,
-    removeCount       : counterDucks.creators.removeCount,
-    addCountFromServer: counterDucks.creators.addCountFromServer
-  }
-)(Dashboard)

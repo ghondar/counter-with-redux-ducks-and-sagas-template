@@ -48,7 +48,7 @@ export default function createDuck({ namespace, store, initialState = {}, creato
         switch (action.type) {
           case types.UPDATE:
             if(draft.status !== statuses.EDITING) draft.status = statuses.EDITING
-            for (let key in action.payload) draft[key] = action.payload[key]
+            for (let key in action.payload) draft[key] = action.payload[key] // eslint-disable-line
 
             return
           case types.FETCH_PENDING:
@@ -56,13 +56,13 @@ export default function createDuck({ namespace, store, initialState = {}, creato
 
             return
           case types.FETCH_FULFILLED:
-            for (let key in action.payload) draft[key] = action.payload[key]
+            for (let key in action.payload) draft[key] = action.payload[key] // eslint-disable-line
             draft.status = statuses.READY
 
             return
           case types.FETCH_FOR_PATH_FULFILLED:
             if(action.dataForPath) draft.dataForPath = action.dataForPath
-            for (let key in action.payload) draft[key] = action.payload[key]
+            for (let key in action.payload) draft[key] = action.payload[key] // eslint-disable-line
             draft.status = statuses.READY
 
             return
@@ -79,7 +79,7 @@ export default function createDuck({ namespace, store, initialState = {}, creato
           case types.PATCH_FULFILLED:
             draft.status = statuses.SAVED
             if(action.id) draft.id = action.id
-            for (let key in action.payload) draft[key] = action.payload[key]
+            for (let key in action.payload) draft[key] = action.payload[key] // eslint-disable-line
 
             return
           case types.DELETE_FULFILLED:
