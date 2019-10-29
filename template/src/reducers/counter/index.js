@@ -1,9 +1,8 @@
 import { WAIT_FOR_ACTION } from 'redux-wait-for-action'
 import produce from 'immer'
-import { takeEvery } from 'redux-saga/effects'
 
 import base from 'reducers/base'
-import { addCountFromServer } from './sagas'
+import { addCountFromServer, watchCountServer } from './sagas'
 
 export default base({
   namespace   : 'crassa',
@@ -29,17 +28,18 @@ export default base({
       }
     }),
   selectors: ({ store }) => ({
-    getCount: state => state[store].count
+    getCount : state => state[store].count,
+    getStatus: state => state[store].status
   }),
   creators: ({ types }) => ({
     addCount          : () => ({ type: types.ADD_COUNT }),
     removeCount       : () => ({ type: types.REMOVE_COUNT }),
-    addCountFromServer: () => ({ type: types.FETCH, [WAIT_FOR_ACTION]: types.FETCH_FULFILLED })
+    addCountFromServer: addMore => ({ type: types.FETCH, [WAIT_FOR_ACTION]: types.FETCH_FULFILLED, addMore })
   }),
   sagas: duck => ({
     addCountFromServer: addCountFromServer(duck)
   }),
-  takes: ({ types, sagas }) => ([
-    takeEvery(types.FETCH, sagas.addCountFromServer)
+  takes: (duck) => ([
+    watchCountServer(duck)
   ])
 })

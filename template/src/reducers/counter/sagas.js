@@ -1,19 +1,25 @@
-import { select, call, put } from 'redux-saga/effects'
+import { select, call, put, take, fork } from 'redux-saga/effects'
+
 import { Get } from 'lib/Request'
 
-export const addCountFromServer = ({ types, selectors }) => function* () {
+export const addCountFromServer = ({ types, selectors }) => function* (addMore) {
   try {
-    yield put({ type: types.FETCH_PENDING })
+    const status = yield select(selectors.getStatus)
+    if(status !== 'READY' || addMore) {
+      yield put({ type: types.FETCH_PENDING })
+      const payload = yield call(Get, 'counter')
 
-    const payload = yield call(Get, 'counter')
-    const count = yield select(selectors.getCount)
+      const count = yield select(selectors.getCount)
 
-    yield put({
-      type   : types.FETCH_FULFILLED,
-      payload: {
-        count: payload.count + count
-      }
-    })
+      yield put({
+        type   : types.FETCH_FULFILLED,
+        payload: {
+          count: payload.count + count
+        }
+      })
+    } else {
+      console.log('loaded from server')
+    }
   } catch (e) {
     const { type, message, response: { data: { message: messageResponse } = {} } = {} } = e
     switch (type) {
@@ -29,3 +35,10 @@ export const addCountFromServer = ({ types, selectors }) => function* () {
     }
   }
 }
+
+export const watchCountServer = ({ types, sagas }) => fork(function* () {
+  while (true) {
+    const { addMore } = yield take(types.FETCH)
+    yield fork(sagas.addCountFromServer, addMore)
+  }
+})
