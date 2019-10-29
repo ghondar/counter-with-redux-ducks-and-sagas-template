@@ -61,7 +61,7 @@
     "resolver": null
   },
   "dependencies": {
-    "@hot-loader/react-dom": "16.10.22",
+    "@hot-loader/react-dom": "16.10.2",
     "axios": "0.19.0",
     "connected-react-router": "6.5.2",
     "@crassa/next": "{-- project-version --}",
