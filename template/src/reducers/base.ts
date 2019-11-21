@@ -1,7 +1,32 @@
-import Duck from 'extensible-duck'
 import produce from 'immer'
+import { TakeableChannel } from 'redux-saga'
 
-export default function createDuck({ namespace, store, initialState = {}, creators, selectors }) {
+const Duck = require('extensible-duck').default
+
+export interface DuckTypes {
+  selectors: Record<string, (state: any, ...args: any[]) => any>
+  statuses: Record<string, string>;
+  types: Record<string, TakeableChannel<unknown> & string>;
+  store: string;
+  sagas: Record<string, (...args: any[]) => any>;
+}
+
+export interface DuckInitialState {
+  status: string;
+  error: null;
+}
+
+export type Types = Record<string, any>
+
+export interface Args {
+  namespace: string;
+  store: string;
+  initialState: Record<string, any>;
+  creators?: Function;
+  selectors?: Function;
+}
+
+export default function createDuck({ namespace, store, initialState = {}, creators, selectors }: Args) {
   return new Duck({
     namespace,
     store,
@@ -43,7 +68,7 @@ export default function createDuck({ namespace, store, initialState = {}, creato
       'PATCH_FAILURE',
       'PATCH_CANCEL'
     ],
-    reducer: (state, action, { types, statuses }) => {
+    reducer: (state: Types, action: Types, { types, statuses }: DuckTypes) => {
       return produce(state, draft => {
         switch (action.type) {
           case types.UPDATE:
@@ -117,7 +142,7 @@ export default function createDuck({ namespace, store, initialState = {}, creato
     },
     selectors,
     creators,
-    initialState: ({ statuses }) => ({
+    initialState: ({ statuses }: DuckTypes) => ({
       ...initialState,
       status: statuses.NEW,
       error : null

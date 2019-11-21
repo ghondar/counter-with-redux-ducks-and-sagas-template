@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
+import { AnyAction, Store } from 'redux'
 
-export default class Root extends Component {
+interface RootProps {
+  store: Store<any, AnyAction>
+}
+
+export default class Root extends Component<RootProps> {
   render() {
     const { store, children } = this.props
 
     return <Provider store={store}>{children}</Provider>
   }
-}
-
-Root.propTypes = {
-  store: PropTypes.object.isRequired
 }

@@ -1,8 +1,18 @@
-import { WAIT_FOR_ACTION } from 'redux-wait-for-action'
 import produce from 'immer'
 
-import base from 'reducers/base'
+import base, { DuckInitialState, DuckTypes } from 'reducers/base'
 import { addCountFromServer, watchCountServer } from './sagas'
+
+import { State } from 'reducers'
+
+export type Counter = DuckInitialState & {
+  count: number
+}
+
+export type CounterAction = {
+  payload: Counter,
+  type: string
+}
 
 export default base({
   namespace   : 'crassa',
@@ -12,8 +22,8 @@ export default base({
   }
 }).extend({
   types  : [ 'ADD_COUNT', 'REMOVE_COUNT' ],
-  reducer: (state, action, { types }) =>
-    produce(state, draft => {
+  reducer: (state: Counter, action: CounterAction, { types }: DuckTypes) =>
+    produce<Counter>(state, draft => {
       switch (action.type) {
         case types.ADD_COUNT:
           draft.count++
@@ -27,19 +37,19 @@ export default base({
           return
       }
     }),
-  selectors: ({ store }) => ({
-    getCount : state => state[store].count,
-    getStatus: state => state[store].status
+  selectors: ({ store }: DuckTypes) => ({
+    getCount : (state: State): number => state[store].count,
+    getStatus: (state: State): string => state[store].status
   }),
-  creators: ({ types }) => ({
+  creators: ({ types }: DuckTypes) => ({
     addCount          : () => ({ type: types.ADD_COUNT }),
     removeCount       : () => ({ type: types.REMOVE_COUNT }),
-    addCountFromServer: addMore => ({ type: types.FETCH, [WAIT_FOR_ACTION]: types.FETCH_FULFILLED, addMore })
+    addCountFromServer: (addMore: string) => ({ type: types.FETCH, addMore })
   }),
-  sagas: duck => ({
+  sagas: (duck: DuckTypes) => ({
     addCountFromServer: addCountFromServer(duck)
   }),
-  takes: (duck) => ([
+  takes: (duck: DuckTypes) => ([
     watchCountServer(duck)
   ])
 })

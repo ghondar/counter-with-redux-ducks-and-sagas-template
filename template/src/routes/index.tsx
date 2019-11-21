@@ -5,16 +5,12 @@ import loadable from '@loadable/component'
 
 import Loading from 'components/Common/Loading'
 
-const Dashboard = loadable(async () => {
-  const { 'default': AsyncDashboard } = await import(/* webpackPrefetch: true */ 'containers/Dashboard')
-
-  return props => <AsyncDashboard {...props} />
-}, {
+const Dashboard = loadable(() => import(/* webpackPrefetch: true */ 'containers/Dashboard'), {
   ssr     : true,
   fallback: <Loading />
 })
 
-export default history => {
+export default (history: any) => {
   return (
     <ConnectedRouter history={history}>
       <Route component={Dashboard} exact path='/' />
