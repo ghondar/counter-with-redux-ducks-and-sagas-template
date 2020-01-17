@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": "lib/ssr",
     "lib": [
       "es5",
       "es6",
@@ -28,12 +28,10 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "removeComments": true,
-    "sourceMap": true,
     "strict": true,
     "target": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "noEmit": true,
     "resolveJsonModule": true, // Required for JSON files
     "skipLibCheck": true,
     "types": [
@@ -97,7 +95,8 @@
       "lib": [
         "src/lib"
       ]
-    }
+    },
+    "plugins": [{ "transform": "@zerollup/ts-transform-paths" }]
   },
   "include": [
     "**/*.ts",

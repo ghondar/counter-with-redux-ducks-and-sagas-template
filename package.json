@@ -5,13 +5,15 @@
   "main": "index.tsx",
   "scripts": {
     "start": "crassa start",
-    "build": "crassa build",
+    "build": "crassa build && npm run ttsc",
     "dev": "crassa dev",
     "lint": "crassa lint",
     "count": "crassa count-lines",
     "start:dev": "crassa start-dev",
     "test": "crassa test --env=jsdom",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "ttsc": "ttsc",
+    "postinstall": "ttsc"
   },
   "keywords": [],
   "author": "",
@@ -63,17 +65,18 @@
   "dependencies": {
     "@crassa/next": "ghondar/crassa#typescript",
     "@hot-loader/react-dom": "16.11.0",
-    "@loadable/component": "5.10.3",
+    "@loadable/component": "5.11.0",
     "@types/loadable__component": "5.10.0",
-    "@types/react-redux": "7.1.5",
-    "@types/react-router-dom": "5.1.2",
+    "@types/react-redux": "7.1.6",
+    "@types/react-router-dom": "5.1.3",
     "@types/redux-devtools": "3.0.47",
     "@types/redux-devtools-dock-monitor": "1.1.33",
     "@types/redux-devtools-log-monitor": "1.0.34",
     "@types/redux-logger": "3.0.7",
-    "@types/webpack-env": "1.14.1",
-    "axios": "0.19.0",
-    "connected-react-router": "6.6.0",
+    "@types/webpack-env": "1.15.0",
+    "@zerollup/ts-transform-paths": "1.7.11",
+    "axios": "0.19.1",
+    "connected-react-router": "6.6.1",
     "extensible-duck": "1.6.0",
     "history": "4.10.1",
     "react": "16.12.0",
@@ -83,17 +86,17 @@
     "react-redux": "7.1.3",
     "react-router": "5.1.2",
     "react-router-dom": "5.1.2",
-    "redux": "4.0.4",
+    "redux": "4.0.5",
     "redux-logger": "3.0.6",
-    "redux-saga": "1.1.3",
-    "ts-node": "8.5.2"
+    "redux-saga": "1.1.3"
   },
   "devDependencies": {
-    "@testing-library/react": "9.3.2",
+    "@testing-library/react": "9.4.0",
     "redux-devtools": "3.5.0",
     "redux-devtools-dock-monitor": "1.1.3",
     "redux-devtools-log-monitor": "1.4.0",
-    "typescript": "3.7.2"
+    "typescript": "3.7.5",
+    "ttypescript": "1.5.10"
   },
   "husky": {
     "hooks": {
