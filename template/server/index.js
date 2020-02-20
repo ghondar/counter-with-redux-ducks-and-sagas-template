@@ -1,14 +1,13 @@
-import express from 'express'
-import v1 from './v1'
+import AutoLoad from 'fastify-autoload'
+import path from 'path'
 
-const router = express.Router()
+module.exports = function(fastify, opts, next) {
+  fastify.register(AutoLoad, {
+    dir    : path.join(__dirname, 'v1'),
+    options: {
+      prefix: '/v1'
+    }
+  })
 
-router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
-})
-
-router.use('/v1', v1)
-
-export default router
+}

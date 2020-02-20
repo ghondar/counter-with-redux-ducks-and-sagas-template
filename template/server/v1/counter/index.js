@@ -1,11 +1,11 @@
-import express from 'express'
-
-const router = express.Router()
-
-router.get('/', (req, res) => {
-  res.json({
-    count: 5
+module.exports = function(fastify, opts, next) {
+  fastify.get('/', (req, res) => {
+    res.send({
+      count: 5
+    })
   })
-})
 
-export default router
+  next()
+}
+
+module.exports.autoPrefix = '/counter'
