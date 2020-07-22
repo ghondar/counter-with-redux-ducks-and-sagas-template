@@ -65,7 +65,7 @@
     "@hot-loader/react-dom": "16.13.0",
     "axios": "0.19.2",
     "connected-react-router": "6.8.0",
-    "@crassa/next": "{-- project-version --}",
+    "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
     "history": "5.0.0",
     "react": "16.13.1",
