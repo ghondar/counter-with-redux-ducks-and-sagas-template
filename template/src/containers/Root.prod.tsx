@@ -1,15 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
-import { AnyAction, Store } from 'redux'
 
-interface RootProps {
-  store: Store<any, AnyAction>
+const Root = ({ store, children }: { store: any, children: any}) => {
+  return (
+    <Provider store={store}>{children}</Provider>
+  )
 }
 
-export default class Root extends Component<RootProps> {
-  render() {
-    const { store, children } = this.props
-
-    return <Provider store={store}>{children}</Provider>
-  }
-}
+export default Root
