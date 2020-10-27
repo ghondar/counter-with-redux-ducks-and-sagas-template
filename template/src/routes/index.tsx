@@ -6,13 +6,11 @@ import loadable from '@loadable/component'
 import Loading from 'components/Common/Loading'
 
 const Dashboard = loadable(() => import(/* webpackPrefetch: true */ 'containers/Dashboard'), {
-  ssr     : true,
   fallback: <Loading />
 })
 
-export default (history: any) => {
-  return (
-    <ConnectedRouter history={history}>
-      <Route component={Dashboard} exact path='/' />
-    </ConnectedRouter>
-  )}
+export default (history: any) => (
+  <ConnectedRouter history={history}>
+    <Route component={Dashboard} exact path='/' />
+  </ConnectedRouter>
+)

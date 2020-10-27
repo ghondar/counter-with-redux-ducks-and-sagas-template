@@ -4,8 +4,8 @@ import { TakeableChannel } from 'redux-saga'
 const Duck = require('extensible-duck').default
 
 export interface DuckTypes {
-  selectors: Record<string, (state: any, ...args: any[]) => any>
   statuses: Record<string, string>;
+  selectors: Record<string, (state: any, ...args: any[]) => any>;
   types: Record<string, TakeableChannel<unknown> & string>;
   store: string;
   sagas: Record<string, (...args: any[]) => any>;
@@ -13,7 +13,7 @@ export interface DuckTypes {
 
 export interface DuckInitialState {
   status: string;
-  error: null;
+  error?: null;
 }
 
 export type Types = Record<string, any>
@@ -22,8 +22,8 @@ export interface Args {
   namespace: string;
   store: string;
   initialState: Record<string, any>;
-  creators?: Function;
-  selectors?: Function;
+  creators?: () => void;
+  selectors?: () => void;
 }
 
 export default function createDuck({ namespace, store, initialState = {}, creators, selectors }: Args) {

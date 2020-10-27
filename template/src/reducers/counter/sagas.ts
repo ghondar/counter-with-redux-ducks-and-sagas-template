@@ -1,9 +1,9 @@
 import { select, call, put, take, fork } from 'redux-saga/effects'
-import { DuckTypes } from '../base'
 
 import { Get } from 'lib/Request'
+import { DuckTypes } from 'reducers/base'
 
-export const addCountFromServer = ({ types, selectors }: DuckTypes) => function* (addMore: string) {
+export const addCountFromServer = ({ types, selectors }: DuckTypes) => function* (addMore: boolean): Generator<any, any, any> {
   try {
     const status = yield select(selectors.getStatus)
     if(status !== 'READY' || addMore) {

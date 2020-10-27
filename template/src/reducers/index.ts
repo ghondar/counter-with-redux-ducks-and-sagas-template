@@ -9,11 +9,12 @@ export interface State {
   [propName: string]: any
 }
 
+export function* rootSaga(): Generator<any, any, any> {
+  yield all([ ...counter.takes ])
+}
+
 export default (history: any) => combineReducers({
   router         : connectRouter(history),
   [counter.store]: counter.reducer
 })
 
-export function* rootSaga() {
-  yield all([ ...counter.takes ])
-}
