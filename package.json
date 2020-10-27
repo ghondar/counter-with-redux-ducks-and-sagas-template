@@ -22,6 +22,7 @@
   "license": "ISC",
   "crassa": {
     "displayName": "{-- project-name --}",
+    "platform": "ts",
     "aliases": {
       "utils": "./src/utils",
       "lib": "./src/lib",
