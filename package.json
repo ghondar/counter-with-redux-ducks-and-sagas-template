@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "crassa start",
-    "build": "crassa build && npm run ttsc",
+    "build": "crassa build && npm run ttsc && crassa server-build",
     "dev": "crassa dev",
     "server:build": "crassa server-build",
     "g": "crassa g",
@@ -78,7 +78,7 @@
     "@zerollup/ts-transform-paths": "1.7.18",
     "axios": "0.20.0",
     "connected-react-router": "6.8.0",
-    "crassa": "ghondar/crassa#typescriptNext",
+    "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
     "history": "5.0.0",
     "react-hot-loader": "4.13.0",
