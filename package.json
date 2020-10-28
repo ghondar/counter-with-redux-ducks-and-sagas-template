@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "crassa start",
-    "build": "crassa build && npm run ttsc && crassa server-build",
+    "build": "crassa build && crassa server-build",
     "dev": "crassa dev",
     "server:build": "crassa server-build",
     "g": "crassa g",
@@ -13,9 +13,7 @@
     "count": "crassa count-lines",
     "start:dev": "crassa start-dev",
     "test": "crassa test --env=jsdom",
-    "lint-staged": "lint-staged",
-    "ttsc": "ttsc",
-    "postinstall": "ttsc"
+    "lint-staged": "lint-staged"
   },
   "keywords": [],
   "author": "",
