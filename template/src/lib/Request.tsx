@@ -7,8 +7,8 @@ export const baseURL = REACT_APP_REST_API_LOCATION + '/api/' + REACT_APP_API_VER
 type Payload = Record<string, any>
 
 function serialize(obj: Payload) {
-  var str = []
-  for (var p in obj) if(obj.hasOwnProperty(p)) str.push(encodeURIComponent(p) + '=' + obj[p])
+  const str = []
+  for (const p in obj) if(obj.hasOwnProperty(p)) str.push(encodeURIComponent(p) + '=' + obj[p])
 
   return str.join('&')
 }
