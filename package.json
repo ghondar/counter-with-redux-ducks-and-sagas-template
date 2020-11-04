@@ -73,6 +73,7 @@
     "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
     "history": "4.10.1",
+    "husky": "4.3.0",
     "react-hot-loader": "4.13.0",
     "react-router-dom": "5.2.0",
     "redux-logger": "3.0.6"
@@ -98,10 +99,7 @@
     }
   },
   "lint-staged": {
-    "{src,server}/**/*.{ts,tsx}": [
-      "eslint --ext .ts,tsx --fix",
-      "git add"
-    ]
+    "{src,server}/**/*.ts?(x)": "eslint --ext .ts,tsx --fix"
   },
   "browserslist": [
     ">0.2%",
