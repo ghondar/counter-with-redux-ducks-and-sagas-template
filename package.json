@@ -71,15 +71,14 @@
     "connected-react-router": "6.8.0",
     "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
-    "history": "5.0.0",
+    "history": "4.10.1",
     "react-hot-loader": "4.13.0",
     "react-router-dom": "5.2.0",
     "redux-logger": "3.0.6"
   },
   "devDependencies": {
-    "@testing-library/react": "11.1.0",
+    "@testing-library/react": "11.1.1",
     "@types/loadable__component": "5.13.1",
-    "@types/react-redux": "7.1.9",
     "@types/react-router-dom": "5.1.6",
     "@types/redux-devtools": "3.0.47",
     "@types/redux-devtools-dock-monitor": "1.1.33",
@@ -98,8 +97,8 @@
     }
   },
   "lint-staged": {
-    "{src,server}/**/*.js": [
-      "eslint . --ext .js --fix",
+    "{src,server}/**/*.{ts,tsx}": [
+      "eslint --ext .ts,tsx --fix",
       "git add"
     ]
   },
