@@ -11,6 +11,7 @@
     "g": "crassa g",
     "lint": "crassa lint",
     "count": "crassa count-lines",
+    "dev:start": "crassa dev-start",
     "start:dev": "crassa start-dev",
     "test": "crassa test --env=jsdom",
     "lint-staged": "lint-staged",
