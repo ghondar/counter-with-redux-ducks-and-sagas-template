@@ -69,7 +69,6 @@
     "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
     "history": "4.10.1",
-    "react-hot-loader": "4.13.0",
     "react-router-dom": "5.2.0",
     "redux-logger": "3.0.6"
   },
