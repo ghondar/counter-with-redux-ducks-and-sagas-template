@@ -80,7 +80,7 @@
     "react/jsx-uses-react": ["error"],
     "react/jsx-uses-vars": ["error"],
     "react/react-in-jsx-scope": ["error"],
-    "no-unused-vars": [
+    "@typescript-eslint/no-unused-vars": [
       "error",
       { "vars": "local", "args": "after-used", "ignoreRestSiblings": false }
     ],
