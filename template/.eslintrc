@@ -76,7 +76,7 @@
     "react/jsx-no-duplicate-props": ["error"],
     "react/jsx-sort-props": ["error"],
     "react/jsx-wrap-multilines": ["error"],
-    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-react": 0,
     "react/jsx-uses-vars": ["error"],
     "import/no-anonymous-default-export": [2, {"allowArrowFunction": true}],
     "react/react-in-jsx-scope": 0,
