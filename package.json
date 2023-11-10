@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "17.0.1",
-    "axios": "0.21.1",
+    "axios": "1.6.0",
     "connected-react-router": "6.9.1",
     "crassa": "{-- project-version --}",
     "extensible-duck": "ghondar/extensible-duck",
